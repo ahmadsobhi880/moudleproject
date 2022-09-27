@@ -1,0 +1,59 @@
+﻿@model IEnumerable<IdintityProject.Models.StudentRequest>
+
+@{
+    ViewBag.Title = "ApprovalRequest";
+    Layout = "~/Views/Shared/LayoutLoggedIn.cshtml";
+}
+
+<h2> Requests From Students</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserNameRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.messageRequest)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RequestStatus)
+            
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserNameRequest)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmailRequest)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SubjectName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.messageRequest)
+    </td>
+    <td>
+        @Html.DisplayTextFor(modelitem => item.RequestStatus)
+    </td>
+    <td>
+        @Html.ActionLink("Add Status", "Status", new { id = item.Id })
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

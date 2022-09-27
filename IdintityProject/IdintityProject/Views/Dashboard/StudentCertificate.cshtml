@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "StudentCertificate";
+    Layout = "~/Views/Shared/LayoutLoggedIn.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <script src="~/bootstrap/dashboardPage/js/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    </head>
+
+
+<body>
+    <br /><br /><br />
+
+    <h2 style="margin-left:27%">Sami Shamoon Collage Of Enginnering - 2022</h2>
+
+    <div id="downloads" style="width: 800px; height: 600px; padding: 20px; margin-left: 24%; border: 10px solid #787878 ">
+        <div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
+            <span style="font-size:50px; font-weight:bold">Student Permit</span>
+            <br><br>
+            <span style="font-size:25px"><i>This is to certify that</i></span>
+            <br><br>
+            <span style="font-size:25px"><i>@User.Identity.GetUserName() is a student on Sami shamoon College Of Engineering</i></span> <br /><br />
+
+
+            <span style="font-size:30px"><b></b></span>
+            <span style="font-size:25px"><i>Started at <p><strong>@DateTime.Now.Month/@DateTime.Now.Year</strong></p></i></span>
+
+            <span style="font-size:30px"></span>
+            <span style="font-size:20px">
+                End in :<p><strong>7/2025</strong></p>
+                <b></b>
+            </span> <br /><br /><br /><br />
+            <span style="font-size:30px"></span>
+        </div>
+    </div>
+
+
+
+    <br /><br>
+    <a href="javascript:void(0)" class="btn btn-primary btn-download btn-lg" style="margin-left:45%">Download PDF  </a>
+    <script src="~/pdf/js/jspdf.debug.js"></script>
+    <script src="~/pdf/js/html2canvas.min.js"></script>
+    <script src="~/pdf/js/html2pdf.min.js"></script>
+    <script>
+        const options = {
+            
+            margin: 0.5,
+
+            filename: 'Studentpermit.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 500
+            },
+            html2canvas: {
+                scale: 1
+            },
+            jsPDF: {
+                unit: 'in',
+                format: 'letter',
+                orientation: 'portrait'
+            }
+        }
+
+        $('.btn-download').click(function (e) {
+            e.preventDefault();
+            const element = document.getElementById('downloads');
+            html2pdf().from(element).set(options).save();
+        });
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

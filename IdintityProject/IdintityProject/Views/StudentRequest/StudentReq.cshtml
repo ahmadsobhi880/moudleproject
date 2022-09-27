@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<IdintityProject.Models.StudentRequest>
+
+@{
+    ViewBag.Title = "StudentReq";
+    Layout = "~/Views/Shared/LayoutLoggedIn.cshtml";
+}
+
+<h3>@User.Identity.GetUserName() Requests List</h3>
+
+<p>
+    @Html.ActionLink("Create New Request", "Index")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EmailRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.messageRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.EmailRequest)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SubjectName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.messageRequest)
+    </td>
+
+    @{ if (item.RequestStatus.Equals("Approve"))
+
+        {
+            <td>
+                <span class="shadow-input1" style="color:forestgreen;font-size:26px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"> @Html.DisplayFor(modelItem => item.RequestStatus) </span>
+            </td>
+}
+
+        else
+        {
+            {
+                <td>
+                    <span class="shadow-input1" style="color:red;font-size:26px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" > @Html.DisplayFor(modelItem => item.RequestStatus) </span>
+                </td>
+}
+        }
+
+
+
+
+    }
+
+
+</tr>
+    }
+
+</table>

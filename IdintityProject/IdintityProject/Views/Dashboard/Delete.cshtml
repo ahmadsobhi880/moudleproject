@@ -1,0 +1,48 @@
+﻿@model IdintityProject.Models.UserRequestsModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/LayoutLoggedIn.cshtml";
+}
+
+<h3>Delete</h3>
+
+<h4>Are you sure you want to delete this request?</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullNameRequests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullNameRequests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailRequests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailRequests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumberRequests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumberRequests)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "RequestsForUsers")
+        </div>
+    }
+</div>

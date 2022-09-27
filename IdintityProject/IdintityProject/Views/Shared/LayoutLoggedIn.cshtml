@@ -1,0 +1,256 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/bootstrap/adminPage/css/style.css">
+    
+</head>
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <a href="~/Dashboard/Profile" class="img logo rounded-circle mb-5" style="background-image: url(/bootstrap/adminPage/images/logo1.jpg);"></a>
+                <h1 style="color: darkorange; text-align: center; font-size:30px">@User.Identity.GetUserName()</h1>
+                <br />
+                <br />
+             
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                    </li>
+                    @if (User.IsInRole("Admins"))
+                    {
+                        <li>
+                            <a href="~/Roles/">Roles</a>
+
+                        </li>
+
+                        <li>
+                            <a href="/Account/Register/">Add a New User </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admins") || User.IsInRole("Teachers"))
+                    {
+                        <li>
+                            <a href="~/ManageUsers/">Students And Teachers Details</a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="~/Course/">Courses</a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="~/Grades/">Grades for Students</a>
+
+                        </li>
+                    }
+                    @if (User.IsInRole("Students"))
+                    {
+                        <li>
+                            <a href="~/StudentGrades/">My Grades List</a>
+
+                        </li>
+                    }
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/StudentCourses/">My Courses List</a>
+
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/ManageUsers/Calendar">My Calendar </a>
+
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/StudentRequest/">Send Student Requests  </a>
+
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/StudentRequest/StudentReq/">My Requests Status  </a>
+
+                        </li>
+                    }
+
+
+
+                    @if (User.IsInRole("Admins"))
+                    {
+
+                        <li>
+                            <a href="~/StudentRequest/ApprovalRequest/">All Students Requests </a>
+
+                        </li>
+                    }
+
+
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/Dashboard/StudentCertificate/">My Student Permit  </a>
+
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("Teachers"))
+                    {
+
+                        <li>
+                            <a href="~/HomeWorks/">HomeWorks Management </a>
+
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/HomeWorks/">My HomeWorks  </a>
+
+                        </li>
+                    }
+
+
+
+                    @if (User.IsInRole("Admins"))
+                    {
+
+                        <li>
+                            <a href="~/Dashboard/RequestsForUsers/">Users Registration Requests </a>
+
+                        </li>
+                    }
+
+
+
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/StudentCourses/Exams">Exams List </a>
+
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/Dashboard/ApiData">API -  Get Data </a>
+
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("Students"))
+                    {
+
+                        <li>
+                            <a href="~/Course/Prices">Courses  Prices </a>
+
+                        </li>
+                    }
+
+
+                </ul>
+
+
+
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto ">
+                            <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+
+
+                            <ul class="nav navbar-nav ml-auto pl-5 ">
+
+                                <li>@Html.ActionLink("Manage Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+
+
+                            </ul>
+
+
+                            <ul class="nav navbar-nav ml-auto pl-5 ">
+
+                                <li>@Html.ActionLink("Back To Home", "Index", "Home")</li>
+
+                            </ul>
+
+                        </ul>
+
+
+                    </div>
+
+                </div>
+            </nav>
+
+            @RenderBody()
+
+
+        </div>
+    </div>
+
+    <script src="~/bootstrap/adminPage/js/jquery.min.js"></script>
+    <script src="~/bootstrap/adminPage/js/popper.js"></script>
+    <script src="~/bootstrap/adminPage/js/bootstrap.min.js"></script>
+    <script src="~/bootstrap/adminPage/js/main.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

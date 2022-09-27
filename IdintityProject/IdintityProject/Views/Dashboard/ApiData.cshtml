@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "ApiData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left:40%;">חונכות</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th >
+            נתונים של חונכות
+        </th>
+     
+        
+        <th></th>
+    </tr>
+
+    <tr >
+        <td  >
+            <br />
+            <div class="row" id="title" style=" color:red; font-size:20px;">
+                <strong><span></span></strong>
+            </div>
+        </td>
+
+
+    </tr>
+
+
+</table>
+
+<br /><br /><br />
+<input class="btn btn-primary" type="button" id="btnGet" value="Get Api Data" />
+
+
+
+
+
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btnGet").click(function () {
+
+            var data = {
+                resource_id: 'ac596ca9-43d3-4321-a6a7-2f0f66560921', // the resource id
+                __extras: null,
+            };
+
+            $.ajax({
+                url: 'https://data.gov.il/api/3/action/datastore_search',
+                data: data,
+                dataType: 'jsonp',
+                success: function (data) {
+                    alert("You Got the results From the API")
+                    const div = document.getElementById('title');
+                    const span = div.firstElementChild;
+                    
+
+                    span.innerHTML = Object.values(data.result.records[12]);
+
+                },
+                error: function (err) {
+                    alert('error', err)
+                }
+
+
+            });
+        });
+
+    });
+
+
+</script>

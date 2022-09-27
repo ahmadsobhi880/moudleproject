@@ -1,0 +1,41 @@
+﻿@model IdintityProject.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/LayoutLoggedIn.cshtml";
+}
+
+<h2>Profile</h2>
+
+<div>
+
+
+
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+  
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">@ViewBag.id</td>
+                <td>@ViewBag.user</td>
+  
+
+            </tr>
+           
+        </tbody>
+    </table>
+
+</div>
+
